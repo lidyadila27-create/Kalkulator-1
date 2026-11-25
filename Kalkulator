@@ -1,0 +1,49 @@
+import math
+
+print("=== Kalkulator Sederhana (8 Operasi) ===")
+print("Operator yang bisa digunakan: +, -, *, /, **, sqrt, sin, cos, tan")
+
+angka1 = float(input("Masukkan angka pertama: "))
+operator = input("Pilih operator (+, -, *, /, **, sqrt, sin, cos, tan): ")
+
+if operator in ["+", "-", "*", "/", "**"]:
+    angka2 = float(input("Masukkan angka kedua: "))
+    
+    if operator == "+":
+        hasil = angka1 + angka2
+    elif operator == "-":
+        hasil = angka1 - angka2
+    elif operator == "*":
+        hasil = angka1 * angka2
+    elif operator == "/":
+        if angka2 != 0:
+            hasil = angka1 / angka2
+        else:
+            hasil = "Error: Tidak bisa membagi dengan nol!"
+    elif operator == "**":
+        hasil = angka1 ** angka2
+        
+    print("Hasil:", hasil)
+
+elif operator in ["sqrt", "sin", "cos", "tan"]:
+    if operator == "sqrt":
+        if angka1 >= 0:
+            hasil = math.sqrt(angka1)
+        else:
+            hasil = "Error: Tidak bisa menarik akar dari bilangan negatif!"
+    else:
+        radian = math.radians(angka1)
+        if operator == "sin":
+            hasil = math.sin(radian)
+        elif operator == "cos":
+            hasil = math.cos(radian)
+        elif operator == "tan":
+            if angka1 % 180 == 90:
+                hasil = "Tak terdefinisi"
+            else:
+                hasil = math.tan(radian)
+                
+    print("Hasil:", hasil)
+
+else:
+    print("Error: Operator tidak valid!")
